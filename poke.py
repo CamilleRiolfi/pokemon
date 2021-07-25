@@ -204,7 +204,7 @@ class roucool(Pokemon):
 my_pokemon= input("Choose your starter : 0: bulbizarre, 1 : salameche, 2: carapuce, 3:pikachu, 4: roucool\n")
 
 
-# si l'utilisateur n'écrit pas 0 ni 1 ni 2, lui indiquer une erreur et le refaire choisir
+# si l'utilisateur n'écrit pas les numéros énoncés lui indiquer une erreur et le refaire choisir
 while my_pokemon != "0" and my_pokemon != "1" and my_pokemon !="2"  and my_pokemon != "3" and my_pokemon != "4":
     print("ERROR")
     my_pokemon= input("Choose your starter : 0: bulbizarre, 1 : salameche, 2: carapuce, 3:pikachu, 4: roucool\n")
@@ -247,6 +247,15 @@ winsound.Beep(2500, 1000)
 
 nombre_degats = 0
 def degats(pokemon_attaquant, pokemon_defenseur):
+    """ degats est une fonction qui définit le nombre de dégats fait pas le pokemon attaquant, avec une probabilité de coup critique et une probabilité que l'attaque échoue
+        
+        Input : pokemon_attaquant est un objet
+                pokemon_defenseur est un objet
+            
+        Output :   
+                nombre_degats est un int     
+        
+        """
     nombre_degats = 0
     coup_critique = random.randint(1, 10)
     evite_attaque = random.randint(1, 15)
@@ -263,6 +272,11 @@ def degats(pokemon_attaquant, pokemon_defenseur):
         nombre_degats = int(((((pokemon_attaquant.level*0.4+2)*pokemon_attaquant.puissance*pokemon_attaquant.attack)/(pokemon_defenseur.defense*50))+2)*pokemon_attaquant.coeff)
 
     return nombre_degats
+
+
+# le pokemon ayant la vitesse la plus grande attaque en premier
+# si l'un des pokemons tombe en dessous de 0 pv, le combat s'arrete
+# les attaques de l'ordi sont aléatoires
 
 tour = 0
 while my_pokemon.pv > 0 or pokemon_rival.pv > 0:
@@ -320,3 +334,8 @@ if my_pokemon.pv <= 0:
 
 if pokemon_rival.pv <= 0:
     print("Le pokémon rival est KO!\nVous avez gagné :D ")
+
+    
+    
+    
+  
